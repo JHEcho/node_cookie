@@ -157,6 +157,28 @@ var app = http.createServer(function (request, response) {
       response.writeHead(200);
       response.end(html);
     });
+  } else if (pathname === '/login_procsess') {
+    var body = '';
+    request.on('data', function (data) {
+      body = body + data;
+    });
+    request.on('end', function () {
+      var post = qs.parse(body);
+      var filteredId = path.parse(id).base;
+      if (post.email === 'pyleso@nate.com' && post.password === '111111') {
+        response.writeHead(302, {
+          'Set-Cookie': [
+            `email=${post.email}`,
+            `password=${post.password}`,
+            `nickname=pyleso`
+          ],
+          Location: `/`
+        });
+        response.end();
+      } else {
+        response.end('Who?');
+      }
+    });
   } else {
     response.writeHead(404);
     response.end('Not found');
