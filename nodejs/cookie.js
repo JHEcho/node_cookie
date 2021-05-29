@@ -13,7 +13,9 @@ http.createServer(function (request, response) {
 			'tasty_cookie=strawberry'
 			`Permanent=cookies; Max-Age=${60 * 60 * 24 * 30}`, // 설정한 날짜까지 지속
 			'Secure=Secure; Secure', //https 일때만 전송한다.
-			'HttpOnly=HttpOnly; HttpOnly' // javescript 에서는 접근할수 없다
+			'HttpOnly=HttpOnly; HttpOnly', // javescript 에서는 접근할수 없다
+			'Path=Path; Path=/cookie', //디렉토리와 그 아래에서만 기능한다
+			'Doamin=Domain; Domain=o2.org', // 서브도메인까지 사용할수 있다
 		]
 	});
 
