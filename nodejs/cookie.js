@@ -11,7 +11,9 @@ http.createServer(function (request, response) {
 		'Set-Cookie': [
 			'yummy_cookie=choco',
 			'tasty_cookie=strawberry'
-			`Permanent=cookies; Max-Age=${60*60*24*30}`
+			`Permanent=cookies; Max-Age=${60 * 60 * 24 * 30}`, // 설정한 날짜까지 지속
+			'Secure=Secure; Secure', //https 일때만 전송한다.
+			'HttpOnly=HttpOnly; HttpOnly' // javescript 에서는 접근할수 없다
 		]
 	});
 
